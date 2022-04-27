@@ -65,15 +65,26 @@ void RLEListDestroy(RLEList list)
 
 RLEListResult RLEListAppend(RLEList list, char value)
 {
-    if(!list || value == NULL)
-    {
+    if(!list || value == NULL){
         return RLE_LIST_NULL_ARGUMENT;
     }
-    struct RLEList newHead = RLEListCreate();
-    if(!newHead)
-    {
-        return RLE_LIST_OUT_OF_MEMORY;
+    while(!list){ // list go to her last cell
+        list = list->next;
     }
+
+    if(list->letter == value){
+        list->amount++;
+    }
+    else{
+        struct RLEList newHead = RLEListCreate();
+        if(!newHead){
+            return RLE_LIST_OUT_OF_MEMORY;
+        }
+        newHead->letter = value;
+        newHead->amount = 1;
+        list->next = newHead;
+    }
+
     return RLE_LIST_SUCCESS;
 }
 
