@@ -1,3 +1,5 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include "RLEList.h"
 
 struct RLEList_t{
@@ -94,7 +96,7 @@ RLEListResult RLEListRemove(RLEList list, int index)
     return RLE_LIST_SUCCESS;
 }
 
-int check_amount_of_Nodes(RLEList list)
+int checkAmountOfNodes(RLEList list)
 {
     int count = 0;
     while(list){
@@ -106,10 +108,14 @@ int check_amount_of_Nodes(RLEList list)
 
 char* RLEListExportToString(RLEList list, RLEListResult* result)
 {
-    int count = check_amount_of_Nodes(list);
+    int count = checkAmountOfNodes(list);
     int index = 0;
     if(!list){
-        result = RLE_LIST_NULL_ARGUMENT;
+        *result = RLE_LIST_NULL_ARGUMENT;
+    }
+    char* str = (char*) malloc(sizeof(char*)*count*3);
+    if (!str){
+        *result = RLE_LIST_ERROR;
     }
     for(int i =0; i<count; i++)
     {
