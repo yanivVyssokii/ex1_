@@ -6,7 +6,7 @@ struct RLEList_t{
     int amount;
     char letter;
     struct RLEList_t* next;
-}
+};
 
 int RLEListSize(RLEList list){
     if (!list){
@@ -24,7 +24,7 @@ char RLEListGet(RLEList list, int index, RLEListResult *result){
     if (result!=RLE_LIST_SUCCESS){
         return 0;
     }
-    if (index<0||index>=RLEListSize(list)||){
+    if (index<0||index>=RLEListSize(list)){
         return RLE_LIST_ERROR;
     }
     while (index-list->amount>0){
@@ -42,7 +42,7 @@ RLEListResult RLEListMap(RLEList list, MapFunction map_function){
         list->letter=(*map_function)(list->letter);
         list=list->next;
     }
-    return LIST_SUCCESS;
+    return RLE_LIST_SUCCESS;
 }
 
 RLEList RLEListCreate()
@@ -78,10 +78,11 @@ RLEListResult RLEListAppend(RLEList list, char value)
         list->amount++;
     }
     else{
-        struct RLEList newHead = RLEListCreate();
+        RLEList newHead = RLEListCreate();
         if(!newHead){
             return RLE_LIST_OUT_OF_MEMORY;
         }
+        newHead->next=NULL;
         newHead->letter = value;
         newHead->amount = 1;
         list->next = newHead;
@@ -139,6 +140,6 @@ char* RLEListExportToString(RLEList list, RLEListResult* result)
     if(!result){
         return NULL;
     }
-    result = LIST_SUCCESS;
+    result = RLE_LIST_SUCCESS;
     return str;
 }
