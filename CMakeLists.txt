@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.0.0)
 
-project(hw1 VERSION 0.1.0 LANGUAGES C)
+project(ex1 VERSION 0.1.0 LANGUAGES C)
 
 add_library(RLEList.h STATIC RLEList.c)
 add_library(AsciiArtTool.h STATIC AsciiArtTool.c)

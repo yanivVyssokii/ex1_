@@ -27,7 +27,7 @@ void turnListIntoImage(RLEList list, char* image)
         return;
     }
     int index=0;
-    while (!list){
+    while (list!=NULL){
         int count = list->amount;
         while(count>0) {
             image[index] = list->letter;
