@@ -6,7 +6,6 @@
 
 
 RLEList asciiArtRead(FILE* in_stream) {
-    char* buffer= malloc(sizeof(char)* CHUNK_SIZE);
     RLEList list = RLEListCreate();
     char letter=(char)fgetc(in_stream);
     while (letter!=EOF) {
