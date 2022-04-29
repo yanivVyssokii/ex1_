@@ -93,17 +93,19 @@ RLEListResult RLEListAppend(RLEList list, char value)
 
 RLEListResult RLEListRemove(RLEList list, int index)
 {
-    if(index == NULL){
+    if(list == NULL){
         return RLE_LIST_NULL_ARGUMENT;
-    }
-    for( int i=0; i<index; i++){
-        list = list->next;
     }
     if(RLEListSize(list)<=index){
         return RLE_LIST_INDEX_OUT_OF_BOUNDS;
     }
-    RLEList toDelete = list;
-    list = list->next;
+
+    for( int i=0; i<index-1; i++){
+        list = list->next;
+    }
+
+    RLEList toDelete = list->next;
+    list->next = toDelete->next;
     free(toDelete);
     return RLE_LIST_SUCCESS;
 }
