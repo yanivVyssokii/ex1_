@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "RLEList.h"
 #include "AsciiArtTool.h"
+#include "RLEList.h"
 #define CHUNK_SIZE 256
 
 
@@ -9,12 +9,15 @@ RLEList asciiArtRead(FILE* in_stream) {
     char* buffer= malloc(sizeof(char)* CHUNK_SIZE);
     RLEList list = RLEListCreate();
     while (fgets(buffer, CHUNK_SIZE, in_stream) != NULL) {
-            char letter = *buffer;
-            while (*buffer == letter) {
-                RLEListAppend(list, letter);
-                buffer++;
-            }
+        int index=0;
+        while(*(buffer+index)!='\n'){
+            char letter = *(buffer+index);
+            RLEListAppend(list, letter);
+            index++;
+        }
+        RLEListAppend(list, '\n');
     }
+    free(buffer);
     return list;
 }
 
