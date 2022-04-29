@@ -23,6 +23,7 @@ int main(int argc, char ** argv)
     }
     fclose(in_stream);
     fclose(out_stream);
+    return 0;
 }
 
 char map_function (char letter)

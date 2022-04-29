@@ -6,7 +6,6 @@
 #define MTMEX1__ASCIIARTTOOL_H
 
 #include "RLEList.h"
-#include <stdio.h>
 
 /**
  * asciiArtRead: Returns an RLEList of the text in the file

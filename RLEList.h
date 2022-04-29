@@ -5,8 +5,6 @@
 #ifndef HW1_RLELIST_H
 #define HW1_RLELIST_H
 
-#include <stdio.h>
-#include <stdbool.h>
 
 /**
 * Run Length Encoding List
