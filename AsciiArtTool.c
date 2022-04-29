@@ -8,16 +8,11 @@
 RLEList asciiArtRead(FILE* in_stream) {
     char* buffer= malloc(sizeof(char)* CHUNK_SIZE);
     RLEList list = RLEListCreate();
-    while (fgets(buffer, CHUNK_SIZE, in_stream) != NULL) {
-        int index=0;
-        while(*(buffer+index)!='\n'){
-            char letter = *(buffer+index);
-            RLEListAppend(list, letter);
-            index++;
-        }
-        RLEListAppend(list, '\n');
+    char letter=(char)fgetc(in_stream);
+    while (letter!=EOF) {
+        RLEListAppend(list, letter);
+        letter=(char)fgetc(in_stream);
     }
-    free(buffer);
     return list;
 }
 
