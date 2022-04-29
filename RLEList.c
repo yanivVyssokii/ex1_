@@ -53,6 +53,7 @@ RLEList RLEListCreate()
         return NULL;
     }
     ptr -> next = NULL;
+    ptr -> amount = -1;
     return ptr;
 }
 
@@ -74,7 +75,10 @@ RLEListResult RLEListAppend(RLEList list, char value)
     while(list->next != NULL){ // list go to her last cell
         list = list->next;
     }
-
+    if (list->amount==-1){
+        list->amount=1;
+        list->letter=value;
+    }
     if(list->letter == value){
         list->amount++;
     }
