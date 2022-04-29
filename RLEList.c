@@ -3,7 +3,6 @@
 #include "RLEList.h"
 
 
-
 int RLEListSize(RLEList list){
     if (!list){
         return -1;
@@ -17,15 +16,20 @@ int RLEListSize(RLEList list){
 }
 
 char RLEListGet(RLEList list, int index, RLEListResult *result){
-    if (result!=RLE_LIST_SUCCESS){
-        return 0;
+    if(list == NULL){
+        *result = RLE_LIST_NULL_ARGUMENT;
     }
     if (index<0||index>=RLEListSize(list)){
-        return RLE_LIST_ERROR;
+        *result = RLE_LIST_INDEX_OUT_OF_BOUNDS;
     }
-    while (index-list->amount>0){
+
+    while (index-list->amount>0 && (*result!= (RLE_LIST_INDEX_OUT_OF_BOUNDS) || *result!=RLE_LIST_NULL_ARGUMENT)) {
         index-=list->amount;
         list=list->next;
+    }
+
+    if (*result!=RLE_LIST_SUCCESS){
+        return 0;
     }
     return list->letter;
 }
