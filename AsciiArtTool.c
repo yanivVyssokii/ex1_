@@ -7,13 +7,13 @@
 
 RLEList asciiArtRead(FILE* in_stream) {
     RLEList list = RLEListCreate();
-    char letter=(char)fgetc(in_stream);
+    char letter;
     do {
+        letter=(char)fgetc(in_stream);
         if( feof(in_stream) ) {
             break ;
         }
         RLEListAppend(list, letter);
-        letter=(char)fgetc(in_stream);
     } while(1);
     return list;
 }
