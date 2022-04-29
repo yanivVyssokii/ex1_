@@ -7,9 +7,9 @@
 int checkAmountOfNodes(RLEList list);
 
 RLEList asciiArtRead(FILE* in_stream) {
-
+    char* buffer= malloc(sizeof(char)* CHUNK_SIZE);
     RLEList list = RLEListCreate();
-    while (fgets(buffer, CHUNK_SIZE, in_strem) != NULL) {
+    while (fgets(buffer, CHUNK_SIZE, in_stream) != NULL) {
         {
             char letter = *buffer;
             while (*buffer == letter) {
