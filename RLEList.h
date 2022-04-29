@@ -29,6 +29,12 @@
 * Typedef for defining the RLE list.
 * Complete the implementation of struct RLEList_t defined in RLEList.c
 */
+struct RLEList_t{
+    int amount;
+    char letter;
+    struct RLEList_t* next;
+};
+
 typedef struct RLEList_t *RLEList;
 
 /** Enum used for returning error codes from RLE list functions */

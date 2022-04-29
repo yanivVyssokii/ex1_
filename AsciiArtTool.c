@@ -3,7 +3,7 @@
 #include "RLEList.h"
 #include "AsciiArtTool.h"
 #define CHUNK_SIZE 256
-#define YANIV 5
+
 int checkAmountOfNodes(RLEList list);
 
 RLEList asciiArtRead(FILE* in_stream) {

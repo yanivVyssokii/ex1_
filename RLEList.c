@@ -2,11 +2,7 @@
 #include <stdlib.h>
 #include "RLEList.h"
 
-struct RLEList_t{
-    int amount;
-    char letter;
-    struct RLEList_t* next;
-};
+
 
 int RLEListSize(RLEList list){
     if (!list){
