@@ -123,18 +123,23 @@ int checkAmountOfNodes(RLEList list)
 char* RLEListExportToString(RLEList list, RLEListResult* result)
 {
     int count = checkAmountOfNodes(list);
+    int amount = getAmountOfDigits(list);
     int index = 0;
-    if(!list){
+    if(list == NULL){
         *result = RLE_LIST_NULL_ARGUMENT;
+        return NULL;
     }
-    char* str = (char*) malloc(sizeof(char*)*count*3);
-    if (!str){
+    char* str = (char*) malloc(sizeof(char*)*(count*2+amount));
+    if (str==NULL){
         *result = RLE_LIST_ERROR;
+        return NULL;
     }
     for(int i =0; i<count; i++)
     {
         str[index]=list->letter;
-        str[index+1]=list->amount;
+
+        char* num = (char*) list->amount;
+        str[index+1]=num;
         str[index+2]='\n';
         index+=3;
         list = list->next;
@@ -142,6 +147,27 @@ char* RLEListExportToString(RLEList list, RLEListResult* result)
     if(!result){
         return NULL;
     }
-    result = RLE_LIST_SUCCESS;
+    *result = RLE_LIST_SUCCESS;
     return str;
+}
+
+int findNumOfDigits(int num)
+{
+    int count = 0;
+    while(!num)
+    {
+        count++;
+        num = num/10;
+    }
+    return count;
+}
+
+int getAmountOfDigits(RLEList list)
+{
+    int count=0;
+    while(list!=NULL){
+        count+= findNumOfDigits(list->amount);
+        list = list->next;
+    }
+    return count;
 }
