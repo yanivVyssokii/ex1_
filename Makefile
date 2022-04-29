@@ -1,12 +1,17 @@
+CC = gcc
 OBJS = main.o AsciiArtTool.o RLEList.o
 EXEC = AsciiArtTool
-AsciiArtTool: main.o AsciiArtTool.o RLEList.o
-	gcc main.o AsciiArtTool.o RLEList.o -o AsciiArtTool
+DEBUG_FLAG = -g
+COMP_FLAG = -std=c99 -Wall -Werror
+
+$(EXEC) : $(OBJS)
+	$(CC) $(DEBUG_FLAG) $(OBJS) -o $@
 main.o: main.c AsciiArtTool.h RLEList.h
-	gcc -c main.c
+	$(CC) -c $(DEBUG_FLAG) $(COMP_FLAG) $*.c
 AsciiArtTool.o: AsciiArtTool.c AsciiArtTool.h RLEList.h
-	gcc -c AsciiArtTool.c
+	$(CC) -c $(DEBUG_FLAG) $(COMP_FLAG) $*.c
 RLEList.o: RLEList.c RLEList.h
-	gcc -c RLEList.c
+	$(CC) -c $(DEBUG_FLAG) $(COMP_FLAG) $*.c
 clean:
 	rm -f $(OBJS) $(EXEC)
+
