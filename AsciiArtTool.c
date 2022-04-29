@@ -4,7 +4,6 @@
 #include "AsciiArtTool.h"
 #define CHUNK_SIZE 256
 
-int checkAmountOfNodes(RLEList list);
 
 RLEList asciiArtRead(FILE* in_stream) {
     char* buffer= malloc(sizeof(char)* CHUNK_SIZE);
@@ -55,12 +54,3 @@ RLEListResult asciiArtPrintEncoded(RLEList list, FILE *out_stream){
     return RLE_LIST_SUCCESS;
 }
 
-int checkAmountOfNodes(RLEList list)
-{
-    int count = 0;
-    while(list){
-        count++;
-        list = list->next;
-    }
-    return count;
-}
