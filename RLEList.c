@@ -23,7 +23,7 @@ char RLEListGet(RLEList list, int index, RLEListResult *result){
         *result = RLE_LIST_INDEX_OUT_OF_BOUNDS;
     }
 
-    while (index-list->amount>0 && (*result!= (RLE_LIST_INDEX_OUT_OF_BOUNDS) || *result!=RLE_LIST_NULL_ARGUMENT)) {
+    while (index-list->amount>0 && (*result != (RLE_LIST_INDEX_OUT_OF_BOUNDS) && *result!=RLE_LIST_NULL_ARGUMENT)) {
         index-=list->amount;
         list=list->next;
     }
@@ -67,10 +67,10 @@ void RLEListDestroy(RLEList list)
 
 RLEListResult RLEListAppend(RLEList list, char value)
 {
-    if(!list || value == NULL){
+    if( list == NULL || value == '\0'){
         return RLE_LIST_NULL_ARGUMENT;
     }
-    while(!list){ // list go to her last cell
+    while(list->next != NULL){ // list go to her last cell
         list = list->next;
     }
 
