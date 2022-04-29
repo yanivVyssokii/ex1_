@@ -138,10 +138,9 @@ char* RLEListExportToString(RLEList list, RLEListResult* result)
     for(int i =0; i<count; i++)
     {
         str[index]=list->letter;
-
-        char* num = (char*) list->amount;
-        sprintf(num, "%d", list->amount);
         int digits = findNumOfDigits(list->amount);
+        char* num = (char*)malloc(sizeof(char)*digits);
+        sprintf(num, "%d", list->amount);
         strcat(str,num);
         index+= digits+1;
         str[index]='\n';
