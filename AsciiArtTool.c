@@ -7,6 +7,9 @@
 RLEList asciiArtRead(FILE* in_stream) {
     RLEList list = RLEListCreate();
     int letter=0;
+    if (in_stream==NULL){
+        return NULL;
+    }
     while(letter!=EOF) {
         letter=fgetc(in_stream);
         RLEListAppend(list, (char)letter);
