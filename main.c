@@ -9,7 +9,9 @@ int main(int argc, char ** argv)
 {
     FILE *in_stream = fopen(argv[2],"r");
     FILE *out_stream = fopen(argv[3],"w");
-
+    if (in_stream==NULL||out_stream==NULL){
+        return 0;
+    }
     char* flag = argv[1];
     RLEList list =  asciiArtRead(in_stream);
     if(!strcmp(flag, "-e"))
