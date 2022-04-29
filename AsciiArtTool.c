@@ -6,14 +6,11 @@
 
 RLEList asciiArtRead(FILE* in_stream) {
     RLEList list = RLEListCreate();
-    char letter;
-    do {
-        letter=(char)fgetc(in_stream);
-        if( feof(in_stream) ) {
-            break ;
-        }
-        RLEListAppend(list, letter);
-    } while(1);
+    int letter=0;
+    while(letter!=EOF) {
+        letter=fgetc(in_stream);
+        RLEListAppend(list, (char)letter);
+    }
     return list;
 }
 
