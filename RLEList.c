@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "RLEList.h"
 
 
@@ -139,9 +140,12 @@ char* RLEListExportToString(RLEList list, RLEListResult* result)
         str[index]=list->letter;
 
         char* num = (char*) list->amount;
-        str[index+1]=num;
-        str[index+2]='\n';
-        index+=3;
+        sprintf(num, "%d", list->amount);
+        int digits = findNumOfDigits(list->amount);
+        strcat(str,num);
+        index+= digits+1;
+        str[index]='\n';
+        index++;
         list = list->next;
     }
     if(!result){
