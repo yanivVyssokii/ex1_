@@ -161,7 +161,7 @@ char* RLEListExportToString(RLEList list, RLEListResult* result)
 int findNumOfDigits(int num)
 {
     int count = 0;
-    while(!num)
+    while(num!=0)
     {
         count++;
         num = num/10;
