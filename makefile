@@ -1,6 +1,6 @@
 CC = gcc
 FILE_DIR = tool/
-OBJS = tool/main.o tool/AsciiArtTool.o RLEList.o
+OBJS = main.o AsciiArtTool.o RLEList.o
 EXEC = AsciiArtTool
 DEBUG_FLAG = -g
 COMP_FLAG = -std=c99 -Wall -Werror
