@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-#include "RLEList.h"
+#include "../RLEList.h"
 #include "AsciiArtTool.h"
 
 char map_function (char letter);
