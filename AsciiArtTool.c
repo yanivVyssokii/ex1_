@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "AsciiArtTool.h"
-#include "RLEList.h"
 
 
 RLEList asciiArtRead(FILE* in_stream) {
