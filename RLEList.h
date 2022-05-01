@@ -31,6 +31,12 @@
 
 typedef struct RLEList_t *RLEList;
 
+struct RLEList_t{
+    int amount;
+    char letter;
+    struct RLEList_t* next;
+};
+
 /** Enum used for returning error codes from RLE list functions */
 typedef enum {
     RLE_LIST_SUCCESS,
